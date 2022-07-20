@@ -110,11 +110,33 @@ namespace LogiwaSharp
                 PageSize = 200,
                 WarehouseId = warehouseId,
                 IsGetOrderDetails = true,
-                LastModifiedDateStart = lastSyncTime.AddHours(-6).ToString("MM.dd.yyyy HH:mm:ss")
+                LastModifiedDateStart = lastSyncTime.ToString("MM.dd.yyyy HH:mm:ss")
             };
             while (true)
             {
                 var allOrders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
+                orders.AddRange(allOrders.Data);
+                filter.SelectedPageIndex++;
+
+                if (allOrders.Data.Length < 200) break;
+            }
+            return orders;
+        }
+
+        public async Task<List<ReceiptOrder>> GetAllLogiwaOrderReceipts(long warehouseId, DateTime lastSyncTime)
+        {
+            var orders = new List<ReceiptOrder>();
+            var filter = new OrderReceiptRequestFilter
+            {
+                SelectedPageIndex = 1,
+                PageSize = 200,
+                WarehouseId = warehouseId,
+                IsReturn = true,
+                ReceiptDateTimeStart = lastSyncTime.ToString("MM.dd.yyyy HH:mm:ss")
+            };
+            while (true)
+            {
+                var allOrders = await ApiClient.ExecuteAsync<GetReceiptOrderResponse>(HttpMethod.Post, Consts.LogiwaGetReceiptOrdersUrl, filter);
                 orders.AddRange(allOrders.Data);
                 filter.SelectedPageIndex++;
 

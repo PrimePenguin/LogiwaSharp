@@ -7,6 +7,7 @@
         public const string LogiwaAddOrUpdateArticleUrl = "en/api/IntegrationApi/InsertInventoryItem";
         public const string LogiwaGetArticlesUrl = "en/api/IntegrationApi/InventoryItemSearch";
         public const string LogiwaGetOrdersUrl = "en/api/IntegrationApi/WarehouseOrderSearch";
+        public const string LogiwaGetReceiptOrdersUrl = "en/api/IntegrationApi/ReceiptAllSearch";
         public const string LogiwaAddOrdersUrl = "en/api/IntegrationApi/InsertShipmentOrder";
         public const string LogiwaUpdateOrdersUrl = "en/api/IntegrationApi/WarehouseOrderUpdate";
         public const string LogiwaCancelOrdersUrl = "en/api/IntegrationApi/CancelShipmentOrder";
