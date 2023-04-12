@@ -128,7 +128,7 @@ namespace LogiwaSharp.Dto
         public object IsKitItem { get; set; }
 
         [JsonProperty("IsPackingItem")]
-        public bool IsPackingItem { get; set; }
+        public bool? IsPackingItem { get; set; }
 
         [JsonProperty("ProductImages")]
         public object ProductImages { get; set; }
