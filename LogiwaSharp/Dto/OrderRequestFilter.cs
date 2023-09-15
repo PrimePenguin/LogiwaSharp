@@ -21,5 +21,11 @@ namespace LogiwaSharp.Dto
 
         [JsonProperty("LastModifiedDate_End")]
         public string LastModifiedDateEnd { get; set; }
+
+        [JsonProperty("ID")]
+        public long? Id { get; set; }
+
+        [JsonProperty("Code")]
+        public string Code { get; set; }
     }
 }

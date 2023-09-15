@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LogiwaSharp.Dto;
@@ -112,6 +113,20 @@ namespace LogiwaSharp
                 IsGetOrderDetails = true,
                 LastModifiedDateStart = lastSyncTime.ToString("MM.dd.yyyy HH:mm:ss")
             };
+            while (true)
+            {
+                var allOrders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
+                orders.AddRange(allOrders.Data);
+                filter.SelectedPageIndex++;
+
+                if (allOrders.Data.Length < 200) break;
+            }
+            return orders;
+        }
+
+        public async Task<List<Order>> GetLogiwaOrders(OrderRequestFilter filter)
+        {
+            var orders = new List<Order>();
             while (true)
             {
                 var allOrders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
