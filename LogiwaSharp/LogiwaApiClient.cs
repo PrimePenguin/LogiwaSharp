@@ -35,7 +35,8 @@ namespace LogiwaSharp
                     requestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
                 }
 
-                var policy = Policy.Handle<HttpRequestException>(ex => (int)ex.StatusCode >= 500 || (int)ex.StatusCode == 429)
+                var policy = Policy
+                    .Handle<HttpRequestException>(ex => (int)ex.StatusCode >= 500 || ex.StatusCode == HttpStatusCode.TooManyRequests || ex.StatusCode == HttpStatusCode.Forbidden)
                     .WaitAndRetryAsync(new[] { TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2) });
                 var response = await policy.ExecuteAsync(() => client.SendAsync(requestMessage));
                 var result = await response.Content.ReadAsStringAsync();
