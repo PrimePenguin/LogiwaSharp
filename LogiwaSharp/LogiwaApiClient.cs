@@ -37,13 +37,13 @@ namespace LogiwaSharp
 
                 var policy = Policy
                     .Handle<HttpRequestException>(ex => (int)ex.StatusCode >= 500 || ex.StatusCode == HttpStatusCode.TooManyRequests || ex.StatusCode == HttpStatusCode.Forbidden)
-                    .WaitAndRetryAsync(new[] { TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2) });
+                    .WaitAndRetryAsync(new[] { TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3) });
                 var response = await policy.ExecuteAsync(() => client.SendAsync(requestMessage));
                 var result = await response.Content.ReadAsStringAsync();
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var exception = JsonConvert.DeserializeObject<LogiwaException>(result);
+                    var exception = result.Contains("Request has been throttled") ? new LogiwaException() : JsonConvert.DeserializeObject<LogiwaException>(result);
                     exception.ApiResponse = result;
                     exception.StatusCode = response.StatusCode;
                     throw exception;
