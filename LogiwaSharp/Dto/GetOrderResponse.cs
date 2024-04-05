@@ -181,6 +181,87 @@ namespace LogiwaSharp.Dto
         [JsonProperty("InvoiceCustomerAddressDescription")]
         public string InvoiceCustomerAddressDescription { get; set; }
 
+        [JsonProperty("CustomerBillingAddressDescription")]
+        public string CustomerBillingAddressDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressCountryDescription")]
+        public string CustomerBillingAddressCountryDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressCityDescription")]
+        public string CustomerBillingAddressCityDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressTownDescription")]
+        public string CustomerBillingAddressTownDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressPostalCode")]
+        public string CustomerBillingAddressPostalCode { get; set; }
+
+        [JsonProperty("CustomerBillingAddressEmail")]
+        public string CustomerBillingAddressEmail { get; set; }
+
+        [JsonProperty("CustomerBillingAddressPhone")]
+        public string CustomerBillingAddressPhone { get; set; }
+
+        [JsonProperty("CustomerBillingAddressAdressText")]
+        public string CustomerBillingAddressAdressText { get; set; }
+
+        [JsonProperty("CustomerBillingAddressAddressDirections")]
+        public string CustomerBillingAddressAddressDirections { get; set; }
+
+        [JsonProperty("CustomerBillingAddressPostalCodeDescription")]
+        public string CustomerBillingAddressPostalCodeDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressStateDescription")]
+        public string CustomerBillingAddressStateDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressCarrierAddressTypeDescription")]
+        public string CustomerBillingAddressCarrierAddressTypeDescription { get; set; }
+
+        [JsonProperty("CustomerBillingAddressIsAddressVerified")]
+        public bool CustomerBillingAddressIsAddressVerified { get; set; }
+
+        [JsonProperty("CustomerBillingAddressExtraInformation")]
+        public string CustomerBillingAddressExtraInformation { get; set; }
+
+        [JsonProperty("CustomerShippingAddressDescription")]
+        public string CustomerShippingAddressDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressCountryDescription")]
+        public string CustomerShippingAddressCountryDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressCityDescription")]
+        public string CustomerShippingAddressCityDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressTownDescription")]
+        public string CustomerShippingAddressTownDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressPostalCode")]
+        public string CustomerShippingAddressPostalCode { get; set; }
+
+        [JsonProperty("CustomerShippingAddressEmail")]
+        public string CustomerShippingAddressEmail { get; set; }
+
+        [JsonProperty("CustomerShippingAddressPhone")]
+        public string CustomerShippingAddressPhone { get; set; }
+
+        [JsonProperty("CustomerShippingAddressText")]
+        public string CustomerShippingAddressText { get; set; }
+
+        [JsonProperty("CustomerShippingAddressDirections")]
+        public string CustomerShippingAddressDirections { get; set; }
+
+        [JsonProperty("CustomerShippingAddressPostalCodeDescription")]
+        public string CustomerShippingAddressPostalCodeDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressStateDescription")]
+        public string CustomerShippingAddressStateDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressCarrierAddressTypeDescription")]
+        public string CustomerShippingAddressCarrierAddressTypeDescription { get; set; }
+
+        [JsonProperty("CustomerShippingAddressIsAddressVerified")]
+        public bool CustomerShippingAddressIsAddressVerified { get; set; }
+
         [JsonProperty("TotalSalesGrossPrice")]
         public long? TotalSalesGrossPrice { get; set; }
 

@@ -10,6 +10,9 @@ namespace LogiwaSharp.Dto
         [JsonProperty("IsGetOrderDetails")]
         public bool IsGetOrderDetails { get; set; }
 
+        [JsonProperty("IsGetCustomerAddressInfo")]
+        public bool IsGetCustomerAddressInfo { get; set; }
+
         [JsonProperty("PageSize")]
         public long PageSize { get; set; }
 
