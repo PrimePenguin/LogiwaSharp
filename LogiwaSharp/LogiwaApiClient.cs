@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Polly;
 
 namespace LogiwaSharp
 {
@@ -35,10 +33,7 @@ namespace LogiwaSharp
                     requestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
                 }
 
-                var policy = Policy
-                    .Handle<HttpRequestException>(ex => (int)ex.StatusCode >= 500 || ex.StatusCode == HttpStatusCode.TooManyRequests || ex.StatusCode == HttpStatusCode.Forbidden)
-                    .WaitAndRetryAsync(new[] { TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3) });
-                var response = await policy.ExecuteAsync(() => client.SendAsync(requestMessage));
+                var response = await client.SendAsync(requestMessage);
                 var result = await response.Content.ReadAsStringAsync();
 
                 if (!response.IsSuccessStatusCode)
