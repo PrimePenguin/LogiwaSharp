@@ -454,6 +454,9 @@ namespace LogiwaSharp.Dto
         [JsonProperty("OrderRiskScore")]
         public long? OrderRiskScore { get; set; }
 
+        [JsonProperty("BusinessDaysInTransit")]
+        public long? BusinessDaysInTransit { get; set; }
+
         [JsonProperty("IsExported2")]
         public object IsExported2 { get; set; }
 
