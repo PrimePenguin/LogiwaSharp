@@ -113,28 +113,28 @@ namespace LogiwaSharp.Dto
         public string OrderDate { get; set; }
 
         [JsonProperty("OrderDate_Start")]
-        public object OrderDateStart { get; set; }
+        public string OrderDateStart { get; set; }
 
         [JsonProperty("OrderDate_End")]
-        public object OrderDateEnd { get; set; }
+        public string OrderDateEnd { get; set; }
 
         [JsonProperty("PlannedDeliveryDate")]
         public string PlannedDeliveryDate { get; set; }
 
         [JsonProperty("PlannedDeliveryDate_Start")]
-        public object PlannedDeliveryDateStart { get; set; }
+        public string PlannedDeliveryDateStart { get; set; }
 
         [JsonProperty("PlannedDeliveryDate_End")]
-        public object PlannedDeliveryDateEnd { get; set; }
+        public string PlannedDeliveryDateEnd { get; set; }
 
         [JsonProperty("PlannedShipDate")]
         public string PlannedShipDate { get; set; }
 
         [JsonProperty("PlannedShipDate_Start")]
-        public object PlannedShipDateStart { get; set; }
+        public string PlannedShipDateStart { get; set; }
 
         [JsonProperty("PlannedShipDate_End")]
-        public object PlannedShipDateEnd { get; set; }
+        public string PlannedShipDateEnd { get; set; }
 
         [JsonProperty("Notes")]
         public string Notes { get; set; }
@@ -152,7 +152,7 @@ namespace LogiwaSharp.Dto
         public object IsExported { get; set; }
 
         [JsonProperty("IsBackorder")]
-        public object IsBackorder { get; set; }
+        public bool? IsBackorder { get; set; }
 
         [JsonProperty("NofShipmentLabel")]
         public long? NofShipmentLabel { get; set; }
@@ -293,16 +293,16 @@ namespace LogiwaSharp.Dto
         public string RouteDescription { get; set; }
 
         [JsonProperty("ChannelID")]
-        public object[] ChannelId { get; set; }
+        public long?[] ChannelId { get; set; }
 
         [JsonProperty("ChannelDescription")]
         public string ChannelDescription { get; set; }
 
         [JsonProperty("IsCancelRequested")]
-        public object IsCancelRequested { get; set; }
+        public bool? IsCancelRequested { get; set; }
 
         [JsonProperty("CarrierID")]
-        public object[] CarrierId { get; set; }
+        public long?[] CarrierId { get; set; }
 
         [JsonProperty("CarrierDescription")]
         public string CarrierDescription { get; set; }
@@ -326,7 +326,7 @@ namespace LogiwaSharp.Dto
         public string StoreName { get; set; }
 
         [JsonProperty("LinkedChannelID")]
-        public object LinkedChannelId { get; set; }
+        public long? LinkedChannelId { get; set; }
 
         [JsonProperty("LinkedChannelDescription")]
         public string LinkedChannelDescription { get; set; }
@@ -368,19 +368,19 @@ namespace LogiwaSharp.Dto
         public string WarehouseReceiptCode { get; set; }
 
         [JsonProperty("BackWarehouseOrderID")]
-        public object BackWarehouseOrderId { get; set; }
+        public long? BackWarehouseOrderId { get; set; }
 
         [JsonProperty("BackWarehouseOrderCode")]
         public string BackWarehouseOrderCode { get; set; }
 
         [JsonProperty("DropShipMasterOrderID")]
-        public object DropShipMasterOrderId { get; set; }
+        public long? DropShipMasterOrderId { get; set; }
 
         [JsonProperty("DropShipWarehouseOrderCode")]
         public string DropShipWarehouseOrderCode { get; set; }
 
         [JsonProperty("DropShipNotes")]
-        public object DropShipNotes { get; set; }
+        public string DropShipNotes { get; set; }
 
         [JsonProperty("IsWaybillPrinted")]
         public object IsWaybillPrinted { get; set; }
@@ -494,10 +494,10 @@ namespace LogiwaSharp.Dto
         public string EntryDateTime { get; set; }
 
         [JsonProperty("EntryDateTime_Start")]
-        public object EntryDateTimeStart { get; set; }
+        public string EntryDateTimeStart { get; set; }
 
         [JsonProperty("EntryDateTime_End")]
-        public object EntryDateTimeEnd { get; set; }
+        public string EntryDateTimeEnd { get; set; }
 
         [JsonProperty("CargoDiscount")]
         public long? CargoDiscount { get; set; }
@@ -521,19 +521,29 @@ namespace LogiwaSharp.Dto
         public string ActualShipDate { get; set; }
 
         [JsonProperty("ActualShipDate_Start")]
-        public object ActualShipDateStart { get; set; }
+        public string ActualShipDateStart { get; set; }
 
         [JsonProperty("ActualShipDate_End")]
-        public object ActualShipDateEnd { get; set; }
+        public string ActualShipDateEnd { get; set; }
 
         [JsonProperty("PlannedPickupDate")]
         public string PlannedPickupDate { get; set; }
 
         [JsonProperty("PlannedPickupDate_Start")]
-        public object PlannedPickupDateStart { get; set; }
+        public string PlannedPickupDateStart { get; set; }
 
         [JsonProperty("PlannedPickupDate_End")]
-        public object PlannedPickupDateEnd { get; set; }
+        public string PlannedPickupDateEnd { get; set; }
+        [JsonProperty("EarliestShipDate")]
+        public string EarliestShipDate { get; set; }
+
+        [JsonProperty("LatestShipDate")]
+        public string LatestShipDate { get; set; }
+
+        [JsonProperty("EarliestDeliveryDate")]
+        public string EarliestDeliveryDate { get; set; }
+        [JsonProperty("LatestDeliveryDate")]
+        public string LatestDeliveryDate { get; set; }
 
         [JsonProperty("CarrierShippingDescription")]
         public string CarrierShippingDescription { get; set; }
