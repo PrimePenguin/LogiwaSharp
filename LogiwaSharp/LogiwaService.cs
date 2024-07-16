@@ -137,7 +137,7 @@ namespace LogiwaSharp
             return orders;
         }
 
-        public async Task<List<Order>> GetOrdersByFilter(OrderRequestFilter filter, DateTime lastSyncTime)
+        public async Task<List<Order>> GetOrdersByFilter(OrderRequestFilter filter)
         {
             var orders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
             return orders.Data.ToList();
