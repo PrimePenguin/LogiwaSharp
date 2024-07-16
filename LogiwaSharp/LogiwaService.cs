@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -82,6 +83,12 @@ namespace LogiwaSharp
             return products;
         }
 
+        public async Task<List<LogiwaProduct>> GetProductsByFilter(ProductRequestFilter filter)
+        {
+            var allProducts = await ApiClient.ExecuteAsync<GetAllProducts>(HttpMethod.Post, Consts.LogiwaGetArticlesUrl, filter);
+            return allProducts.Data.ToList();
+        }
+
         public async Task<List<Stock>> GetAllLogiwaStock()
         {
             var stocks = new List<Stock>();
@@ -100,6 +107,12 @@ namespace LogiwaSharp
             }
 
             return stocks;
+        }
+
+        public async Task<List<Stock>> GetStocksByFilter(StockRequest filter)
+        {
+            var stockQueryResponse = await ApiClient.ExecuteAsync<StockResponse>(HttpMethod.Post, Consts.LogiwaInventoryUrl, filter);
+            return stockQueryResponse.Data.ToList();
         }
 
         public async Task<List<Order>> GetAllLogiwaOrders(long warehouseId, DateTime lastSyncTime)
@@ -124,18 +137,10 @@ namespace LogiwaSharp
             return orders;
         }
 
-        public async Task<List<Order>> GetLogiwaOrders(OrderRequestFilter filter)
+        public async Task<List<Order>> GetOrdersByFilter(OrderRequestFilter filter, DateTime lastSyncTime)
         {
-            var orders = new List<Order>();
-            while (true)
-            {
-                var allOrders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
-                orders.AddRange(allOrders.Data);
-                filter.SelectedPageIndex++;
-
-                if (allOrders.Data.Length < 200) break;
-            }
-            return orders;
+            var orders = await ApiClient.ExecuteAsync<GetOrderResponse>(HttpMethod.Post, Consts.LogiwaGetOrdersUrl, filter);
+            return orders.Data.ToList();
         }
 
         public async Task<List<ReceiptOrder>> GetAllLogiwaOrderReceipts(long warehouseId, DateTime lastSyncTime)
@@ -158,6 +163,12 @@ namespace LogiwaSharp
                 if (allOrders.Data.Length < 200) break;
             }
             return orders;
+        }
+
+        public async Task<List<ReceiptOrder>> GetOrderReceiptsByFilter(OrderReceiptRequestFilter filter)
+        {
+            var allOrders = await ApiClient.ExecuteAsync<GetReceiptOrderResponse>(HttpMethod.Post, Consts.LogiwaGetReceiptOrdersUrl, filter);
+            return allOrders.Data.ToList();
         }
     }
 }
